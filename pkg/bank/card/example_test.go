@@ -104,17 +104,25 @@ func ExampleAddBonus_overLimit()  {
 func ExampleTotal_positive()  {
 	cards:= []types.Card{
 		{
-			Balance: 10_000_00,
+			Balance: 15_000_00,
 			Active: true,
 		},
 		{
-			Balance: 20_000_00,
+			Balance: 5_000_00,
 			Active: true,	
+		},
+		{
+			Balance: -1_000_00,
+			Active: true,	
+		},
+		{
+			Balance: 1_000_00,
+			Active: false,	
 		},
 	}
 	fmt.Println(Total(cards))
 
-	//Output: 3000000
+	//Output: 2000000
 }
 
 /*func ExampleTotal_negative()  {
