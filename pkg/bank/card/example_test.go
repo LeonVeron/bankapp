@@ -101,7 +101,7 @@ func ExampleAddBonus_overLimit()  {
 	//Output: 1
 }*/
 
-func ExampleTotal_positive()  {
+/*func ExampleTotal_positive()  {
 	cards:= []types.Card{
 		{
 			Balance: 15_000_00,
@@ -123,7 +123,7 @@ func ExampleTotal_positive()  {
 	fmt.Println(Total(cards))
 
 	//Output: 2000000
-}
+}*/
 
 /*func ExampleTotal_negative()  {
 	cards:= []types.Card{
@@ -152,3 +152,34 @@ func ExampleTotal_positive()  {
 
 	//Output: 5000000
 }*/	
+
+func ExamplePaymentSources()  {
+	cards:= []types.Card{
+		{
+			PAN: "5058 xxxx xxxx 9999",
+			Balance: 15_000_00,
+			Active: true,
+		},
+		{
+			PAN: "5058 xxxx xxxx 8888",
+			Balance: 5_000_00,
+			Active: true,	
+		},
+		{
+			PAN: "5058 xxxx xxxx 7777",
+			Balance: -1_000_00,
+			Active: true,	
+		},
+		{
+			PAN: "5058 xxxx xxxx 5555",
+			Balance: 1_000_00,
+			Active: false,	
+		},
+	}
+	for _, source := range PaymentSources(cards) {
+		fmt.Println(source.Number)
+	}
+	//Output: 5058 xxxx xxxx 9999
+	// 5058 xxxx xxxx 8888
+
+}
